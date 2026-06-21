@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HUSSAM ABU-HANNA | select works</title>
+  <meta name="description" content="A select of visual works by Hussam Abu-Hanna. Haifa based video & film production, photography and editing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --off-white: #f2f0ec;
+      --mid: #8a8680;
+      --accent: #c8bfb0;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--off-white);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 40px;
+      mix-blend-mode: normal;
+    }
+
+    nav .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 13px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--off-white);
+      text-decoration: none;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    nav .nav-links a {
+      color: var(--mid);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: color 0.25s;
+    }
+
+    nav .nav-links a:hover { color: var(--off-white); }
+
+    nav .nav-ig a {
+      color: var(--mid);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      transition: color 0.25s;
+    }
+    nav .nav-ig a:hover { color: var(--off-white); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 40px 60px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .hero-bg video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.8);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(52px, 8vw, 110px);
+      line-height: 0.92;
+      letter-spacing: -0.01em;
+      color: var(--off-white);
+    }
+
+    .hero-sub {
+      margin-top: 24px;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      color: var(--mid);
+      text-transform: uppercase;
+    }
+
+    /* ── SCROLL CUE ── */
+    .scroll-cue {
+      position: absolute;
+      bottom: 60px;
+      right: 40px;
+      writing-mode: vertical-rl;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      color: var(--mid);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .scroll-cue::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 48px;
+      background: var(--mid);
+      animation: scrollLine 1.8s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+      0%, 100% { opacity: 0.3; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(0.5); }
+    }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 48px;
+      padding-top: 80px;
+    }
+
+    /* ── VIDEO SECTION ── */
+    .video-section {
+      /* Tightened bottom padding from 100px to 40px */
+      padding: 100px 40px 40px 40px; 
+    }
+
+    .video-section h2,
+    .works-section h2 {
+      max-width: 1100px;
+      margin: 0 auto 60px;
+      width: 100%;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(28px, 4vw, 48px);
+      color: var(--off-white);
+    }
+    
+    .video-section .section-label,
+    .works-section .section-label {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0; 
+      max-width: 1100px; 
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .video-wrap {
+      position: relative;
+      aspect-ratio: 16/9;
+      background: #111;
+      overflow: hidden;
+    }
+
+    .video-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ── WORKS ── */
+    .works-section {
+      /* Tightened top padding from 100px to 40px */
+      padding: 40px 40px 100px 40px; 
+    }
+
+    .photo-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 1100px; 
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .gallery-row {
+      display: flex;
+      gap: 16px;
+      width: 100%;
+    }
+
+    .gallery-row .img-wrap {
+      display: block;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .gallery-row .img-wrap:nth-child(1) {
+      width: calc((var(--ar1) / (var(--ar1) + var(--ar2))) * 100%);
+    }
+    .gallery-row .img-wrap:nth-child(2) {
+      width: calc((var(--ar2) / (var(--ar1) + var(--ar2))) * 100%);
+    }
+
+    .photo-grid .img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.6s ease, filter 0.4s ease;
+      filter: brightness(0.9);
+    }
+
+    .photo-grid .img-wrap:hover img {
+      transform: scale(1.03);
+      filter: brightness(1);
+    }
+
+    .gallery-row.standalone {
+      display: block;
+      width: 100%;
+    }
+    
+    .gallery-row.standalone .img-wrap {
+      width: 100% !important;
+    }
+
+    /* ── ABOUT ── */
+    .about-section {
+      padding: 100px 40px;
+    }
+
+    .about-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .about-text .section-label { padding-top: 0; }
+
+    .about-text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1.05;
+      color: var(--off-white);
+      margin-bottom: 32px;
+    }
+
+    .about-text p {
+      color: var(--mid);
+      font-size: 14px;
+      line-height: 1.9;
+      margin-bottom: 16px;
+    }
+
+    .about-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .about-meta span {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .about-social {
+      margin-top: 32px;
+      display: flex;
+      gap: 20px;
+    }
+
+    .about-social a {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      border-bottom: 1px solid #333;
+      padding-bottom: 3px;
+      transition: color 0.25s, border-color 0.25s;
+    }
+
+    .about-social a:hover {
+      color: var(--off-white);
+      border-color: var(--off-white);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px;
+      border-top: 1px solid #1e1e1e;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer .footer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    footer .footer-right {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    footer a {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+
+    footer a:hover { color: var(--off-white); }
+
+    footer .copyright {
+      font-size: 11px;
+      color: #444;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 18px 20px; }
+      nav .nav-links { display: none; }
+
+      .hero { padding: 0 20px 48px; }
+      .scroll-cue { display: none; }
+
+      .video-section { padding: 60px 20px 20px 20px; }
+      .works-section { padding: 20px 20px 60px 20px; }
+
+      .video-grid { grid-template-columns: 1fr; }
+
+      .gallery-row {
+        flex-direction: column;
+        gap: 16px;
+      }
+      
+      .gallery-row .img-wrap {
+        width: 100% !important;
+      }
+
+      .about-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .about-section {
+        padding: 60px 20px;
+      }
+
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+      footer .footer-right { flex-direction: column; gap: 8px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-cue::after { animation: none; }
+      .photo-grid .img-wrap img { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="logo" href="#">Hussam Abu-Hanna</a>
+    <ul class="nav-links">
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#works">Works</a></li>
+      <li><a href="#about">Info</a></li>
+    </ul>
+    <div class="nav-ig">
+      <a href="https://instagram.com/hussamabuhanna/" target="_blank" rel="noopener">↗ Instagram</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg">
+      <video autoplay muted loop playsinline>
+        <source src="media/hero.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="hero-content">
+      <h1>Hussam<br>Abu-Hanna</h1>
+      <p class="hero-sub">Select works</p>
+    </div>
+    <div class="scroll-cue">Scroll</div>
+  </section>
+
+  <section class="video-section" id="portfolio">
+    <p class="section-label">Portfolio</p>
+    <br>
+    <div class="video-grid">
+      <div class="video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/yInXuDpVjs8?wmode=transparent&autoplay=0&mute=0&theme=dark&controls=1&autohide=0&loop=0&showinfo=0&rel=0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          title="Video 1"
+        ></iframe>
+      </div>
+      <div class="video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/xggVLZOT5fg?wmode=transparent&autoplay=0&mute=0&theme=dark&controls=1&autohide=0&loop=0&showinfo=0&rel=0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          title="Video 2"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="works-section" id="works">
+    <p class="section-label">Works</p>
+    <br>
+    <div class="photo-grid">
+      <div class="gallery-row" style="--ar1: 1.3331; --ar2: 1.0000;">
+        <div class="img-wrap p1"><img src="media/photo1.jpg" alt="Work 1" loading="lazy" /></div>
+        <div class="img-wrap p2"><img src="media/photo2.jpg" alt="Work 2" loading="lazy" /></div>
+      </div>
+
+      <div class="gallery-row standalone">
+        <div class="img-wrap p3"><img src="media/photo3.jpg" alt="Work 3" loading="lazy" /></div>
+      </div>
+
+      <div class="gallery-row" style="--ar1: 1.5000; --ar2: 1.9264;">
+        <div class="img-wrap p4"><img src="media/photo4.jpg" alt="Work 4" loading="lazy" /></div>
+        <div class="img-wrap p5"><img src="media/photo5.jpg" alt="Work 5" loading="lazy" /></div>
+      </div>
+
+      <div class="gallery-row standalone">
+        <div class="img-wrap p6"><img src="media/photo6.jpg" alt="Work 6" loading="lazy" /></div>
+      </div>
+
+      <div class="gallery-row" style="--ar1: 1.5181; --ar2: 1.5003;">
+        <div class="img-wrap p7"><img src="media/photo7.jpg" alt="Work 7" loading="lazy" /></div>
+        <div class="img-wrap p8"><img src="media/photo8.jpg" alt="Work 8" loading="lazy" /></div>
+      </div>
+
+      <div class="gallery-row" style="--ar1: 1.5000; --ar2: 0.6665;">
+        <div class="img-wrap p9"><img src="media/photo9.jpg" alt="Work 9" loading="lazy" /></div>
+        <div class="img-wrap p10"><img src="media/photo10.jpg" alt="Work 10" loading="lazy" /></div>
+      </div>
+
+      <div class="gallery-row" style="--ar1: 1.3333; --ar2: 1.3333;">
+        <div class="img-wrap p11"><img src="media/photo11.jpg" alt="Work 11" loading="lazy" /></div>
+        <div class="img-wrap p12"><img src="media/photo12.jpg" alt="Work 12" loading="lazy" /></div>
+      </div>
+
+      <div class="gallery-row" style="--ar1: 0.6665; --ar2: 1.4998;">
+        <div class="img-wrap p13"><img src="media/photo13.jpg" alt="Work 13" loading="lazy" /></div>
+        <div class="img-wrap p14"><img src="media/photo14.jpg" alt="Work 14" loading="lazy" /></div>
+      </div>
+
+      <div class="gallery-row" style="--ar1: 1.0000; --ar2: 1.0000;">
+        <div class="img-wrap p15"><img src="media/photo15.jpg" alt="Work 15" loading="lazy" /></div>
+        <div class="img-wrap p16"><img src="media/photo16.jpg" alt="Work 16" loading="lazy" /></div>
+      </div>
+
+      <div class="gallery-row" style="--ar1: 1.3329; --ar2: 0.7500;">
+        <div class="img-wrap p17"><img src="media/photo17.jpg" alt="Work 17" loading="lazy" /></div>
+        <div class="img-wrap p18"><img src="media/photo18.jpg" alt="Work 18" loading="lazy" /></div>
+      </div>
+
+      <div class="gallery-row" style="--ar1: 1.4992; --ar2: 1.4992;">
+        <div class="img-wrap p19"><img src="media/photo19.jpg" alt="Work 19" loading="lazy" /></div>
+        <div class="img-wrap p20"><img src="media/photo20.jpg" alt="Work 20" loading="lazy" /></div>
+      </div>
+
+      <div class="gallery-row" style="--ar1: 1.0000; --ar2: 1.3388;">
+        <div class="img-wrap p21"><img src="media/photo21.jpg" alt="Work 21" loading="lazy" /></div>
+        <div class="img-wrap p22"><img src="media/photo22.jpg" alt="Work 22" loading="lazy" /></div>
+      </div>
+
+      <div class="gallery-row" style="--ar1: 1.6557; --ar2: 0.6670;">
+        <div class="img-wrap p23"><img src="media/photo23.jpg" alt="Work 23" loading="lazy" /></div>
+        <div class="img-wrap p24"><img src="media/photo24.jpg" alt="Work 24" loading="lazy" /></div>
+      </div>
+
+      <div class="gallery-row" style="--ar1: 1.5000; --ar2: 1.4998;">
+        <div class="img-wrap p25"><img src="media/photo25.jpg" alt="Work 25" loading="lazy" /></div>
+        <div class="img-wrap p26"><img src="media/photo26.jpg" alt="Work 26" loading="lazy" /></div>
+      </div>
+
+      <div class="gallery-row" style="--ar1: 0.6670; --ar2: 1.5003;">
+        <div class="img-wrap p27"><img src="media/photo27.jpg" alt="Work 27" loading="lazy" /></div>
+        <div class="img-wrap p28"><img src="media/photo28.jpg" alt="Work 28" loading="lazy" /></div>
+      </div>
+
+      <div class="gallery-row" style="--ar1: 1.4992; --ar2: 1.4992;">
+        <div class="img-wrap p29"><img src="media/photo29.jpg" alt="Work 29" loading="lazy" /></div>
+        <div class="img-wrap p30"><img src="media/photo30.jpg" alt="Work 30" loading="lazy" /></div>
+      </div>
+
+      <div class="gallery-row standalone">
+        <div class="img-wrap p31"><img src="media/photo31.jpg" alt="Work 31" loading="lazy" /></div>
+      </div>
+
+      <div class="gallery-row" style="--ar1: 1.5080; --ar2: 1.3623;">
+        <div class="img-wrap p32"><img src="media/photo32.jpg" alt="Work 32" loading="lazy" /></div>
+        <div class="img-wrap p33"><img src="media/photo33.jpg" alt="Work 33" loading="lazy" /></div>
+      </div>
+
+      <div class="gallery-row standalone">
+        <div class="img-wrap p34"><img src="media/photo34.jpg" alt="Work 34" loading="lazy" /></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section" id="about">
+    <div class="about-container">
+      <div class="about-text">
+        <p class="section-label">About</p>
+        <h2>Hussam<br>Abu-Hanna</h2>
+        <p>Haifa-based video & film producer, photographer, and editor. Visual storytelling through deliberate framing and light.</p>
+        <div class="about-meta">
+          <span>Haifa · Holy Land</span>
+          <span><a href="mailto:hussamabuhanna@gmail.com" style="color:inherit;text-decoration:none;letter-spacing:inherit;">hussamabuhanna@gmail.com</a></span>
+        </div>
+        <div class="about-social">
+          <a href="https://instagram.com/hussamabuhanna" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-name">Hussam Abu-Hanna</span>
+    <div class="footer-right">
+      <a href="https://instagram.com/hussamabuhanna/" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:hussamabuhanna@gmail.com">Email</a>
+      <span class="copyright">© 2018–2026</span>
+    </div>
+  </footer>
+
+</body>
+</html>
